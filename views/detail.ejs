@@ -1,0 +1,43 @@
+
+<%- include('templates/header') %>
+<%- include('templates/navbar') %>
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1><%= title %></h1>
+
+			<% if (!contact){ %>
+				<div class="alert alert-danger fw-bold" role="alert">
+					 Data contact tidak ada !<br>
+					<a href="/contact" class="alert-link fw-normal">&laquo; kembali ke daftar contact</a>
+				</div>		
+			<% } else { %>
+
+				<div class="card" style="width: 18rem;">
+				  <!-- <img src="..." class="card-img-top" alt="..."> --!>
+				  <div class="card-body">
+					<h5 class="card-title"> <%= contact.nama %> </h5>
+				  </div>
+				  <ul class="list-group list-group-flush">
+					<li class="list-group-item"><%= contact.notelp %></li>
+					<li class="list-group-item"><%= contact.email %></li>
+					<li class="list-group-item"><%= contact.kelas %></li>
+				  </ul>
+
+				  <div class="card-body">
+					<a href="/contact/edit/<%= contact.nama %>" class="card-link btn btn-warning">edit</a>
+					<a href="/contact/delete/<%= contact.nama %>" onclick="confirm('Sure?')" class="card-link btn btn-danger">delete</a>
+				  </div>
+				  <div class="card-body">
+					<a href="/contact" class="card-link">&laquo; back to list contact</a>
+				  </div>
+				</div>
+
+			<% } %>
+
+		</div>
+	</div>
+</div>
+
+<%- include('templates/footer') %>

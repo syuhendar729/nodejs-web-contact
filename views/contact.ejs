@@ -1,0 +1,46 @@
+<%- include('templates/header') %>
+<%- include('templates/navbar') %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h1><%= title %></h1>
+			<p> <%= desc %></p>
+			<a href="/contact/add"class="btn btn-primary">
+				Add Data	
+			</a>
+			<table class="table">
+			  <thead>
+				<tr>
+				  <th scope="col">No</th>
+				  <th scope="col">Name</th>
+				  <th scope="col">Grade</th>
+				  <th scope="col">Action</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				  <% if (contacts.length == 0){ %>
+					<tr>
+						<td colspan="4">
+							<div class="alert alert-warning" role="alert">
+							 Data contact still empty!
+							</div>
+						</td>
+					</tr>			
+				  <% } else { %>
+					  <% contacts.forEach((con, i) => { %>
+						<tr>
+						  <th scope="row"><%= i+1 %></th>
+						  <td> <%= con.nama %></td>
+						  <td> <%= con.kelas %></td>
+						  <td> <a href="/contact/<%= con.nama %>" class="btn btn-success badge rounded-pill">detail</a></td>
+						</tr>
+					  <% }) %>
+				  <% } %>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<%- include('templates/footer') %>

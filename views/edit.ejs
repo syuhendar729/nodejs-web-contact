@@ -1,0 +1,51 @@
+
+<%- include('templates/header') %>
+<%- include('templates/navbar') %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+
+			<% if(!messages) { %>
+				<div class="divkosong"></div>
+			<% } else { %>
+				<div class="alert alert-danger" role="alert">
+					<ul>
+					<% messages.errors.forEach(err => { %>
+						<li><%= err.msg %></li>
+					<% }) %>
+					</ul>
+				</div>
+			<% } %>
+
+			<h2>Form Tambah Data Contact</h2>
+
+			<a href="/contact/<%= contact.nama %>" class="card-link">&laquo; cancel</a>
+
+			<form method="post" action="/contact/update">
+				<input type="hidden" nama="<%= contact.nama %>" name="namaLama" value="<%= contact.nama %>">
+			  <div class="mb-3">
+				<label for="nama" class="form-label">Name</label>
+				<input type="text" class="form-control" id="nama" name="nama" required value="<%= contact.nama %>">
+			  </div>
+			  <div class="mb-3">
+			  <div class="mb-3">
+				<label for="kelas" class="form-label">Grade</label>
+				<input type="text" class="form-control" id="kelas" name="kelas" required value="<%= contact.kelas %>">
+			  </div>
+				<label for="email" class="form-label">Email</label>
+				<input type="email" class="form-control" id="email" name="email" required value="<%= contact.email %>">
+			  </div>
+			  <div class="mb-3">
+				<label for="notelp" class="form-label">Phone number</label>
+				<input type="text" class="form-control" id="notelp" name="notelp" required value="<%= contact.notelp %>">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Update</button>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+<%- include('templates/footer') %>
+
